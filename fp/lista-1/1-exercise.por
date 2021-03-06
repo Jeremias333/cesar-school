@@ -1,7 +1,7 @@
 programa{
 	funcao inicio(){
 		real val1, val2, result
-        caracter confirm
+		caracter confirm
         
 		escreva("Olá usuário, bem vindo ao programa de médias \n")
 		escreva("DIGITE algo e pressione ENTER para continuar \n")
@@ -14,7 +14,7 @@ programa{
 		
 		escreva("Digite o segundo número: ")
 		leia(val2)
-        limpa()
+		limpa()
 		
 		result = (val1+val2)/2
 

@@ -136,6 +136,9 @@ programa{
 		escreva("Mais alto: ", bigger,  "\n")
 		escreva("Mais baixo: ", less,  "\n")
 
+		escreva("Total de homens ", totMen)
+		escreva("Total de mulheres ", totWomen)
+
 
 	}
 }

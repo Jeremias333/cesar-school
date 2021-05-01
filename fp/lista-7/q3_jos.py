@@ -1,0 +1,12 @@
+lista = list()
+result = ""
+repeat = True
+
+while repeat:
+	inp = input()
+	if(inp[0].isdigit()):
+	   inp.replace(inp[0], inp[0].replace("3","E").replace("4", "A").replace("1", "I").replace("5", "S"))
+	result = inp.replace("3","e").replace("4", "a").replace("1", "i").replace("5", "s")
+	print(result)
+	if result.upper() == "FIM" or result.upper() == "SAIR":
+		break

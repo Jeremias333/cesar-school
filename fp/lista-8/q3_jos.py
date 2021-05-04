@@ -4,7 +4,7 @@ full_text = ""
 words_strip = ""
 
 words = input().upper().replace(",", "").replace(".", "").strip()
-words_split = words.split(" ")
+words_split = words.split()
 words_split.sort()
 
 while True:
@@ -14,6 +14,8 @@ while True:
 		break
 
 	full_text += " "+str_text
+
+full_text = full_text.split()
 
 for index in range(len(words_split)):
 	if full_text.count(words_split[index]) > 0:

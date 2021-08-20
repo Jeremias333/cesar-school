@@ -17,10 +17,8 @@ int main() {
     int moe_01 = 0;
 
     scanf("%lf", &val);
-    printf("valor digitado: %.2lf\n", val);
 
     while (1){
-        printf("Passou");
         if(val >= 100.0){
             cel_100 += 1;
             val = val - 100.0;
@@ -61,20 +59,55 @@ int main() {
             break;
         }
     }
-    printf("Cedulas de 100: %d\n", cel_100);
-    printf("Cedulas de 50: %d\n", cel_50);
-    printf("Cedulas de 20: %d\n", cel_20);
-    printf("Cedulas de 10: %d\n", cel_10);
-    printf("Cedulas de 5: %d\n", cel_5);
-    printf("Cedulas de 2: %d\n", cel_2);
-    printf("Moedas de 1 real: %d\n", moe_1);
-    printf("Moedas de 50 centavos: %d\n", moe_50);
-    printf("Moedas de 25 centavos: %d\n", moe_25);
-    printf("Moedas de 10 centavos: %d\n", moe_10);
-    printf("Moedas de 5 centavos: %d\n", moe_5);
-    printf("Moedas de 1 centavos: %d\n", moe_01);
-    printf("\n\n");
-    printf("Valor final: %.2lf\n", val);
+
+    if(cel_100 > 0){
+        printf("%d nota(s) de R$ 100.00\n", cel_100);
+    }
+
+    if(cel_50 > 0){
+        printf("%d nota(s) de R$ 50.00\n", cel_50);
+    }
+
+    if(cel_20 > 0){
+        printf("%d nota(s) de R$ 20.00\n", cel_20);
+    }
+
+    if(cel_10 > 0){
+        printf("%d nota(s) de R$ 10.00\n", cel_10);
+    }
+
+    if(cel_5 > 0){
+        printf("%d nota(s) de R$ 5.00\n", cel_5);
+    }
+
+    if(cel_2 > 0){
+        printf("%d nota(s) de R$ 2.00\n", cel_2);
+    }
+
+    if(moe_1 > 0){
+        printf("%d moeda(s) de R$ 1.00\n", moe_1);
+    }
+
+    if(moe_50 > 0){
+        printf("%d moeda(s) de R$ 0.50\n", moe_50);
+    }
+
+    if(moe_25 > 0){
+        printf("%d moeda(s) de R$ 0.25\n", moe_25);
+    }
+
+    if(moe_10 > 0){
+        printf("%d moeda(s) de R$ 0.10\n", moe_10);
+    }
+
+    if(moe_5 > 0){
+        printf("%d moeda(s) de R$ 0.05\n", moe_5);
+    }
+
+    if(moe_01 > 0){
+        printf("%d moeda(s) de R$ 0.01\n", moe_01);
+    }
+
     return 0;
 
 }

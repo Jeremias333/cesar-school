@@ -46,13 +46,13 @@ int main() {
         }else if(val >= 0.25 && val < 0.50){
             moe_25 += 1;
             val = val - 0.25;
-        }else if(val >= 0.10 && val < 0.25){
+        }else if(val >= 0.10 && val <= 0.19){
             moe_10 += 1;
             val = val - 0.10;
-        }else if(val >= 0.5 && val < 0.10){
+        }else if(val >= 0.05 && val <= 0.09){
             moe_5 += 1;
-            val = val -0.05;
-        }else if(val >= 0.01 && val < 0.5){
+            val = val - 0.05;
+        }else if(val >= 1 && val <= 0.04){
             moe_01 += 1;
             val = val - 0.01;
         }else{

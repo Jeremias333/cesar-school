@@ -76,7 +76,6 @@ int main() {
                 moe_01 += 1;
                 val = val - val;
             }
-            
         }else{
             break;
         }

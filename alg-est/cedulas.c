@@ -1,7 +1,8 @@
 #include <stdio.h>
+#include <math.h>
 
 int main() {
-    double val, result;
+    float val = 0.0;
     int cel_100 = 0;
     int cel_50 = 0;
     int cel_20 = 0;
@@ -16,45 +17,66 @@ int main() {
     int moe_5 = 0; 
     int moe_01 = 0;
 
-    scanf("%lf", &val);
-
+    scanf("%f", &val);
+//368.95
+    // val = roundf(val * 100)/100;
     while (1){
+        // printf("%f \n", val);
         if(val >= 100.0){
             cel_100 += 1;
             val = val - 100.0;
-        }else if (val >= 50.0 && val < 100.0){
+        }else
+        if (val >= 50.0){
             cel_50 += 1;
             val = val - 50.0;
-        }else if(val >= 20.0 && val < 50.0){
+        }else
+        if(val >= 20.0){
             cel_20 += 1;
             val = val - 20.0;
-        }else if(val >= 10 && val < 20.0){
+        }else
+        if(val >= 10){
             cel_10 += 1;
             val = val - 10.0;
-        }else if(val >= 5 && val < 10.0){
+        }else
+        if(val >= 5){
             cel_5 += 1;
             val = val - 5.0;
-        }else if(val >= 2 && val < 5.0){
+        }else
+        if(val >= 2){
             cel_2 += 1;
             val = val - 2.0;
-        }else if(val >= 1 && val < 2.0){
+        }else
+        if(val >= 1){
             moe_1 += 1;
             val = val - 1.0;
-        }else if(val >= 0.50 && val < 1.0){
+        }else
+        if(val >= 0.50){
             moe_50 += 1;
             val = val - 0.50;
-        }else if(val >= 0.25 && val < 0.50){
+        }else
+        if(val >= 0.25){
             moe_25 += 1;
             val = val - 0.25;
-        }else if(val >= 0.10 && val <= 0.19){
+        }else
+        if(val >= 0.10){
             moe_10 += 1;
             val = val - 0.10;
-        }else if(val >= 0.05 && val <= 0.09){
+        }else
+        if(val >= 0.05){
             moe_5 += 1;
             val = val - 0.05;
-        }else if(val >= 1 && val <= 0.04){
+        }else
+        if(val >= 0.01){
             moe_01 += 1;
             val = val - 0.01;
+        }else if (val < 0.01 && val > 0.0){
+            if (val < 0.001){
+                break;
+            }else{
+                moe_01 += 1;
+                val = val - val;
+            }
+            
         }else{
             break;
         }

@@ -3,9 +3,18 @@
 int main(){
     char in[3];
 
-    scanf(" %c\n", &in);
+    //scanf(" %s", in);
+    gets(in);
 
-    int matrix[in[1]][in[3]];
+    printf("%c %c", in[0], in[2]);
+
+    int line = in[0] - '0';
+    int col = in[2] - '0';
+
+    int matrix[line][col];
+
+    printf("linha: %d\n", line);
+    printf("coluna: %d\n", col);
     
     
 }

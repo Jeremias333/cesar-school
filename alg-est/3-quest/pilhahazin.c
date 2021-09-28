@@ -15,13 +15,14 @@ int seekTop(struct stackNode *head);
 int getAbs(struct stackNode *head);
 void printStack(struct stackNode *head);
 
-int main(void){
-    struct stackNode *head = NULL;
-    char action[4];
-    int extractValues=0;
-    int finalValue;
-    int valueAbs;
-    int valueSeekTop;
+int main(void)
+{
+struct stackNode *head;
+char action[4];
+int extractValues;
+int finalValue;
+int valueAbs;
+int valueSeekTop;
 
     while(1){
         // scanf(" %s", &action[11]);
@@ -50,6 +51,7 @@ int main(void){
                     printf("%d\n", valueAbs);
                 }
             }
+        //se for digitado ação push cai aqui.
         }else{
             extractValues = 0;
             printf("Entramos no if do Push\n");
@@ -94,6 +96,7 @@ int pop(struct stackNode **head){
     int aux;
 
     temp = *head;
+
     aux = (*head)->value;
     *head = (*head)->next;
     free(temp);
@@ -109,8 +112,8 @@ int seekTop(struct stackNode *head){
 int getAbs(struct stackNode *head){
     struct stackNode *aux = head;
 
-    int less = head;
-    int more = head;
+    int less = head->value; //nunca mais esquecer de referenciar a variavel do head para pegar o valor.
+    int more = head->value;
     int diff = 0;
 
     while(aux != NULL){
@@ -130,7 +133,7 @@ int getAbs(struct stackNode *head){
     printf("%d valor do more\n", more);
     printf("%d valor do less\n", less);
 
-    diff = (more - less)*-1;
+    diff = more - less;
     return diff;
 }
 

@@ -1,0 +1,1 @@
+Resultado do vetor pós deleção: 211

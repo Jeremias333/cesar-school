@@ -16,12 +16,6 @@ int write_file(){
     }
 }
 
-void addToOutput(char text){
-    myFile = fopen("resultados.txt", "a");
-    fprintf(myFile, "%c", text);
-    fclose(myFile);
-}
-
 int* create_array(int size){
     int * array = malloc(size * sizeof(int));
 
@@ -61,14 +55,18 @@ int main(void){
             char value;
             printf("Valores reverso: ");
             for(int i = 0; i < size; i++){
-                printf("%d ", array[i]);
+                if (array[i] != -1){
+                    printf("%d ", array[i]);
+                }
             }
             
             if(write_file() == 1){
                 fprintf(myFile, "%s", "Resultado de valores reversos: ");
                 for(int i = 0; i < size; i++){
-                    value = array[i]+'0';
-                    fprintf(myFile, "%c", value);
+                    if (array[i] != -1){
+                        value = array[i]+'0';
+                        fprintf(myFile, "%c", value);
+                    }
                 }
                 fprintf(myFile, "%s", "\n");
                 fclose(myFile);
@@ -119,7 +117,39 @@ int main(void){
             }
             printf("\n");
         }else if(choice == 'D' || choice == 'd'){
+            myFile = fopen("resultados.txt", "a");
+            int value = 0;
             
+            printf("Esta é seu vetor atual: ");
+            for (int i = 0; i < size; i++){
+                if (array[i] != -1){
+                    printf("[%dº] = %d ",(i+1), array[i]);
+                }
+            }
+
+            printf("Qual posição deseja remover? ");
+            scanf("%d", &value);
+
+            if(value >= 1 && value <= size){
+                array = deleteN(array, value-1);
+            }else{
+                printf("Opção inválida");
+            }
+
+            if(write_file() == 1){
+                fprintf(myFile, "%s", "Resultado do vetor pós deleção: ");
+                for (int i = 0; i < size; i++){
+                    if(array[i] != -1){
+                        fprintf(myFile, "%d", array[i]);
+                    }
+                }
+                fprintf(myFile, "%s", "\n");
+                fclose(myFile);
+
+                printf("Resultado salvo no arquivo!");
+            }
+            printf("\n");
+
         }else if(choice == 'S' || choice == 's'){
             free(array);
             exit(0);

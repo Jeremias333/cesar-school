@@ -96,8 +96,12 @@ int * unique(int * list_array, int size){
     
 }
 
-void deleteN(int pos){
+int * deleteN(int * list_array, int pos){
+    list_array[pos] = -1;
 
+    printf("Valor do pos %d", list_array[pos]);
+
+    return list_array;
 }
 
 #endif

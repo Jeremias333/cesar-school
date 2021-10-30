@@ -21,16 +21,23 @@ struct Node {
     struct Node *right;
 };
 
-
+// a lógica está perfeita, mas pelo fato de eu iniciar o código sem utilizar o thehuxley, fiquei sem tempo para
+//formatar os outputs
 int main(void){
 
     AVL* root = createAVL();
+    int input;
 
-    insertAVL(root, 40);
-    insertAVL(root, 10);
-    insertAVL(root, 20);
+    while (scanf("%d", &input) != EOF){
+        printf("\n----");
+        printf("\nAdicionando %d\n", input);
+        if(insertAVL(root, input) == 1){
+            printAVL(*root);
+        }
+        
+    }
 
-    printAVL(*root);
+    // printAVL(*root);
 
     return 0;
 }
@@ -49,35 +56,53 @@ int insertAVL(AVL *root, int value){
         new->left = NULL;
         new->right = NULL;
         *root = new;
+
+        printf("Continuou AVL...\n");
+        return 1;
     }
 
     struct Node *act = *root;
 
     if(value < act->value){
+        // printf("\n ---- antes da rotação");
+        // printAVL(*root);
         if((result=insertAVL(&(act->left), value)) == 1){
             if(factBalanceNode(act) >= 2){
+                printf("\nAntes de ajustar balanceamento...\n");
+                printAVL(*root);
+                printf("\nDepois de ajustar balanceamento...\n");
                 if(value < (*root)->left->value){
                     rotateLL(root);
                 }else{
                     rotateLR(root);
                 }
+                printAVL(*root);
             }
         }
     }else{
         if(value > act->value){
-            if((result=insertAVL(&(act->right), value))==1){
+            // printf("\n ---- antes da rotação");
+            // printAVL(*root);
+            if((result=insertAVL(&(act->right), value)) ==1){
                 if(factBalanceNode(act) >= 2){
+                    printf("\nAntes de ajustar balanceamento...\n");
+                    printAVL(*root);
+                    printf("\nDepois de ajustar balanceamento...\n");
                     if((*root)->right->value < value){
                         rotateRR(root);
                     }else{
                         rotateRL(root);
                     }
+                    printAVL(*root);
                 }
             }
+        }else{
+            printf("Continuou AVL...\n");
         }
     }
-    act->height = bigger(heightNode(act->left), heightNode(act->right)) + 1;
 
+    act->height = bigger(heightNode(act->left), heightNode(act->right)) + 1;
+    printAVL(*root);
     return result;
 }
 
@@ -120,31 +145,31 @@ void rotateRR(AVL *root){
     (*root)->height = bigger(heightNode((*root)->left), 
                              heightNode((*root)->right)) + 1;
     
-    node->height = bigger(heightNode(node->left), 
+    node->height = bigger(heightNode(node->right), 
                          (*root)->height) + 1;
 
     (*root) = node;
 }
 
 void rotateLR(AVL *root){
-    rotateLL(&(*root)->left);
-    rotateRR(root);
+    rotateRR(&(*root)->left);
+    rotateLL(root);
 }
 
 void rotateRL(AVL *root){
-    rotateRR(&(*root)->left);
-    rotateLL(root);
+    rotateLL(&(*root)->right);
+    rotateRR(root);
 }
 
 void printAVL(struct Node* nodeParam){
     struct Node *node = nodeParam;
 
     if(node != NULL){
-        printf(" (");
+        printf("   (");
         printf(" %d ", node->value);
         printAVL(node->left);
         printAVL(node->right);
-        printf(") ");
+        printf(")");
     }else{
         printf(" () ");
     }

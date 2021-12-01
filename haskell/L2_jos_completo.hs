@@ -46,7 +46,28 @@ romanDigit a
     | a == 9 = "IX"
     | a == 10 = "X"
 
--- digits :: String -> String
--- digits 
+convertCharToInt :: Char -> Int
+convertCharToInt x
+    | x == '0' = 0
+    | x == '1' = 1
+    | x == '2' = 2
+    | x == '3' = 3
+    | x == '4' = 4
+    | x == '5' = 5
+    | x == '6' = 6
+    | x == '7' = 7
+    | x == '8' = 8
+    | x == '9' = 9
+
+digits :: String -> String
+digits lista = [x | x <- lista, x == '0' || x == '1' ||
+                x == '2' ||  x == '3' || x == '4' || x == '5' ||
+                x == '6' || x == '7' || x == '8' || x == '9']
+
+newReverse :: [Int] -> [Int]
+newReverse [] = [] -- foi necessário por este caso para evitar exception
+newReverse (head':tail') = newReverse tail' ++ [head']
+
+
 
 

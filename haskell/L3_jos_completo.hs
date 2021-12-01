@@ -1,10 +1,18 @@
 cont_elements = 0
 
+myHead :: [Int] -> Int
+myHead [] = 0
+myHead (head':tail') = head'
+
+myTail :: [Int] -> [Int]
+myTail [] = []
+myTail (head':tail') = tail'
+
 elemNum :: Int -> [Int] -> Int
 elemNum a b
     |b == [] = 0
-    |a == head b = 1 + elemNum a (tail b)
-    |otherwise = 0 + elemNum a (tail b)
+    |a == myHead b = 1 + elemNum a (myTail b)
+    |otherwise = 0 + elemNum a (myTail b)
 
 elemNum2 :: Int -> [Int] -> Int
 elemNum2 a b = length [1 | x <- b, x == a]
@@ -16,8 +24,13 @@ unique (a:b)
     |elem a ( unique b ) = [x | x <- ( unique b ), x /= a ]
     |otherwise = a : ( unique b )
 
--- unique_2 :: [Int] -> [Int]
--- unique_2 a = [x | x <- a, (x in a) == False]
+removeIntList :: Int->[Int]->[Int]
+removeIntList a [] = []
+removeIntList a lista = [x | x <- lista, a /= x]
+
+uniqueRecursive :: [Int] -> [Int]
+uniqueRecursive [] = []
+uniqueRecursive (head':tail') = uniqueRecursive (removeIntList head' tail') ++ [head']
 
 orderTriple :: (Int, Int, Int) -> (Int, Int, Int)
 orderTriple (a,b,c)

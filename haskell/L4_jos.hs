@@ -1,61 +1,6 @@
 ver = [[4,2,4,3,4,4,4,5,4,6], [1,2,3,4,5], [2]]
 
--- separarRepeticao :: [Int] -> 
-
--- recebeValores :: [[Int]] -> [Int]
--- recebeValores [] = []
--- recebeValores [[]] = []
--- recebeValores x
---     | x /= [] = concat x
-
--- deletarRepetidos :: [Int] -> [Int]
--- deletarRepetidos x
---     | 
-
--- contarRepetidos :: [Int] -> [(Int, Int)]
--- contarRepetidos (x:xs)
---     | contarRepetidos = [val| val <- xs, x /= xs]
-
-
--- printaGroup :: [Int] -> [Int]
--- printaGroup x
---     | True = " "
-
--- group :: [[Int]] -> [Int]
--- group [] = []
--- group [[]] = []
--- group x
---     | True = recebeValores x
-
-
-
--- -- 1 QUESTÃO
--- recebeValores :: [[Int]] -> [Int]
--- recebeValores [] = []
--- recebeValores [[]] = []
--- recebeValores x
---     | x /= [] = (concat x)
-
--- deletarRepetido :: [Int] -> [Int]
--- deletarRepetido [] = []
--- deletarRepetido (x : xs) = x : (deletarRepetido (remove x xs))
---   where
---     remove :: Int -> [Int] -> [Int]
---     remove x [] = []
---     remove x (y : ys)
---       | x == y = remove x ys
---       | otherwise = y : (remove x ys)
-
--- contarRepetido::
-
-
--- --zip [deletarRetido] [contarRepetido]
--- --[(deletarRetido,contarRepetido)]
--- group :: [[Int]] -> [Int]
--- group [] = []
--- group [[]] = []
--- group x
---     | True = (concat x)
+-- 1 Questão 
 
 myHead :: [Int] -> Int
 myHead [] = 0
@@ -95,4 +40,27 @@ group :: [[Int]]->[(Int, Int)]
 group [[]] = []
 group lista = uniqueRecursive (makeTuple (myConcat lista))
 
+-- 2 Questão 
+type Aluno = (String, String, Int, Char, Float)
+
+myLength :: [a] -> Float
+myLength []     = 0.0
+myLength (x:xs) = (+1.0) (myLength xs)
+
+mySum :: [Float] -> Float
+mySum [] = 0
+mySum (x:xs) = x + mySum xs
+
+-- a)
+calcMedia :: [Float] -> Float
+calcMedia lista = (mySum lista)/((myLength lista) :: Float)
+
+mediaEnem :: [Aluno] -> Float
+mediaEnem [] = 0.0
+mediaEnem lista = calcMedia [e | (a,b,c,d,e) <- lista] 
+
+-- b)
+
+minMaxIdade :: [Aluno]->(String, Int, String, Int)
+minMaxIdade lista = [x |] 
 

@@ -62,5 +62,5 @@ mediaEnem lista = calcMedia [e | (a,b,c,d,e) <- lista]
 -- b)
 
 minMaxIdade :: [Aluno]->(String, Int, String, Int)
-minMaxIdade lista = [x |] 
+minMaxIdade lista = 
 

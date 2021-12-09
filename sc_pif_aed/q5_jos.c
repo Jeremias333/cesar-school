@@ -3,79 +3,135 @@
 #include "string.h"
 #include "math.h"
 
-
-int convert(long long n) {
-    int dec = 0, i = 0, rem;
-
-    while (n!=0) {
-        rem = n % 10;
-        n /= 10;
-        dec += rem * pow(2, i);
-        ++i;
-    }
-}
-
 int main(void){
     int qtd_bets = 0;
     int winners = 0;
-    int col = 10;
-    char string[20];
+    int col = 11;
+    char string[21];
+    // char prize_number[21] = {"5 6 7 8 9 10"};
+    char prize_number[21];
+    int lucky_numbers[7];
 
     scanf("%d", &qtd_bets);
 
     int gamblermen[qtd_bets][col];
 
-    for(int i = 0; i < qtd_bets+1; i++) {
-        gets(string);
+    for(int i = 0; i < qtd_bets; i++) {
+        // int len=strlen(string);
+        // if(string[len-1]=='\n')
+        //     string[len-1]='\0';
+        // printf("valor do i: %d", i);
+        // fgets(string, 21, stdin);
+        // gets(string);
+        scanf(" %s", string);
+
+        //irá substituir o col, já que o indice j irá ficar em constante movimento.
+        int cont = 0;
+
+        //settando -1 em todos valores não preenchidos do array
         for(int j = 0; j < strlen(string); j++){
-            
+            gamblermen[i][j] = -1;
+        }
+
+        for(int j = 0; j < strlen(string); j++){
+            // if(cont > 1){
+            //     gamblermen[i][j] = -1;
+            // }
             if(string[j]==','){
                 char temp_char[2];
-                // j++;
-                printf(" %c\n", string[j]);
-                temp_char[0] = string[j];
-                // temp_char[1] = line[index+1];
-                // printf("\n%c", line[index]);
-                if(temp_char[0] == ','){
-                    if(j - 1 >= 9){
-                        temp_char[0] = string[j-2];
-                        temp_char[1] = string[j-1];
-                        gamblermen[i][j] = convert(strtol(temp_char, NULL, 10));
-                        printf("\nnumero da conta: %d\n", gamblermen[i][j]);
-                        // break;
-                    }else{
-                        gamblermen[i][j] = (string[0]-'0');
-                        printf("\nnumero da conta: %d", gamblermen[i][j]);
-                    }
-                    
+                if((string[j+2]-'0') >= 0){
+                    temp_char[0] = string[j+1];
+                    temp_char[1] = string[j+2];
+                    gamblermen[i][cont] = ((temp_char[0]-'0')*10)+temp_char[1]-'0';
+                    // printf("\nnumero da conta: %d", gamblermen[i][j]);
+                    // break;
+                    j+=2;
+                }else{
+                    gamblermen[i][cont] = (string[j+1]-'0');
+                    // printf("\nnumero da conta: %d (else interno)", gamblermen[i][j]);
+                    j++;
+                }
+            }else{
+                gamblermen[i][cont] = (string[j]-'0');
+                // printf("\nnumero da conta: %d (else externo)", gamblermen[i][j]);
+            }
+            cont++;
+            
+        }
+    }
+
+    // scanf("%[^\n]", prize_number);
+    // gets(prize_number);
+    // scanf("%[^\n]s", prize_number);
+    while ((getchar()) != '\n');
+    // scanf("%s", prize_number);
+    // scanf ("%[^\n]%*c", prize_number);
+    fgets(prize_number, 21, stdin);
+    // prize_number = {"5 6 7 8 9 10"};
+    // int len=strlen(prize_number);
+    // if(prize_number[len-1]=='\n')
+    //     prize_number[len-1]='\0';
+    
+
+    // printf("\n%s", prize_number);
+    int cont = 0;
+
+    for(int i = 0; i < 7; i++){
+        lucky_numbers[i] = -1;
+    }
+
+    // char str[21] = {"1 23 45 58 35 1 2"};
+    char tmp[21];
+    int i;
+    int j;
+    for(i=0;prize_number[i];i++){
+        j=0;
+        while(prize_number[i]>='0' && prize_number[i]<='9')
+        {
+        tmp[j]=prize_number[i];
+        i++;
+        j++;
+        }
+        tmp[j]=0;
+        long a = strtol(tmp, NULL, 10);
+        lucky_numbers[cont] = a;
+        // printf("%d ", lucky_numbers[cont]);
+        // // printf("%ld\n", );
+        // printf("\n%lf ", a);
+        cont++;
+    }
+
+    for(int i = 0; i < qtd_bets; i++) {
+        for(int j = 0; j < col; j++){
+            int value = gamblermen[i][j];
+            // printf("%d ", value);
+        }
+        // printf("\n");
+    }
+    // printf("\n");
+    // for(int i = 0; i < 7; i++){
+    //     printf("%d ", lucky_numbers[i]);
+    // }
+    
+    for(int i = 0; i < qtd_bets; i++) {
+        int cont_lucky_numbers = 0;
+        for(int j = 0; j < col; j++){
+            for(int index = 0; index < 7; index++){
+                if(lucky_numbers[index] == -1 || gamblermen[i][j] == -1){
+                    break;
+                }
+                // printf("\nlucky: %d\ngamblerman: %d", lucky_numbers[0], gamblermen[i][j]);
+                if(lucky_numbers[index] == gamblermen[i][j]){
+                    cont_lucky_numbers++;
                 }
             }
-
-            
-
-            // scanf("%d",  &gamblermen[i][j]);
+        }
+        if(cont_lucky_numbers >= 6){
+            winners++;
         }
     }
 
-    // for(int i = 0; i < qtd_bets; i++) {
-    //     for(int j = 0; j < col; j++){
-    //         printf(" %d",  gamblermen[i][j]);
-    //     }
-    // }
+    printf("Total de ganhadores: %d", winners);
 
-    return 1;
-}
-
-int ** create_bets(int size){
-    int col = 10;
-    int row = size;
-    int **array = malloc(sizeof(int[row][col]));
-
-    for(int i = 0; i < row; i++) {
-        for(int j = 0; j < col; j++){
-            scanf("%d",  &array[i][j]);
-        }
-    }
-
-    return array;
+    return 0;
 }

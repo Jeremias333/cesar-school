@@ -79,67 +79,6 @@
     }
   }
 
-// void fila(int *lista, int raiz, int fim) {
-// 	int ok, maiorFilho, num;
-
-// 	ok = 0;
-// 	while ((raiz*2 <= fim) && (!ok)) {
-
-// 		if (raiz*2 == fim) {
-// 			maiorFilho = raiz * 2;
-// 		}
-// 		else if (lista[raiz * 2] > lista[raiz * 2 + 1]) {
-// 			maiorFilho = raiz * 2;
-// 		}
-// 		else {
-// 			maiorFilho = raiz * 2 + 1;
-// 		}
-
-//     if (lista[raiz] < lista[maiorFilho]) {
-//       num = lista[raiz];
-//       lista[raiz] = lista[maiorFilho];
-//       lista[maiorFilho] = num;
-//       raiz = maiorFilho;
-
-    
-//       }
-      
-//     else {
-//         ok = 1;
-//     }
-    
-//   }
-// }
-
-// int *heapSort(int *lista, int size) {
-// 	int i, num;
-
-// 	for (i = (size / 2); i >= 0; i--) {
-//         // printf("\nvalor de i: %d\n", i);
-        
-// 		fila(lista, i, size - 1);
-//         // for(int i = 0; i < size; i++){
-//         //   if(lista[i] != -1){
-//         //     printf("\nEstado Atual da Heap:");
-//         //     if(lista[i] > -1 && lista[i+1] == -1){
-//         //         printf(" %d", lista[i]);
-//         //     }else{
-//         //         printf(" %d ", lista[i]);
-//         //         printf("|");
-//         //     }
-//         //   }
-//         // }
-// 	}
-
-// 	for (i = size-1; i >= 1; i--) {
-// 		num = lista[0];
-// 		lista[0] = lista[i];
-// 		lista[i] = num;
-// 		fila(lista, 0, i-1);
-// 	}
-//   return lista;
-// }
-
 int main(void){
     int size = 100;
     char values[size];
